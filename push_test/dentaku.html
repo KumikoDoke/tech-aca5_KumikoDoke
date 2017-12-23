@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>四則演算</title>
+</head>
+<body>
+<p>文字</p>
+<form action="dentaku.php"method="post">
+    <!-- action　値は送信先のURI -->
+    <!-- method 値get URIの形式でデータを送信, post 本文としてデータ送信-->
+    <p>一つ目のフォーム<input type = "text" name = "txtA">
+    </p>
+    <select name="selcal" size=1>
+        <!-- セレクトボックス sizeは行数で縦に伸びる-->
+        <!--  name メニューの名前、値は文字列-->
+        <option value = "＋">＋</option>
+        <option value = "－">－</option>
+        <option value = "×">×</option>
+        <option value = "÷">÷</option>
+    </select>
+    <p>2つ目のフォーム<input type="text" name="txtB" >
+    </p>
+    <p>　=　?
+    </p>　
+    <br>
+    <input type = "submit" value = "値を計算">
+    <!-- type = "submit" 送信-->
+    <input type = "reset" value = "クリア">
+    <!-- type = "reset"リセットボタン -->
+</form>
+</body>
+</html>

@@ -16,8 +16,6 @@ try{
     $stt->bindValue(':user_id', $_POST['user_id']);
     //$_POST['user_id'] = $_SESSION["name"];
     $stt->execute();
-    //var_dump($stt->execute());
-    //exit;
 
     $db = NULL;
 }catch(PDOException $e){

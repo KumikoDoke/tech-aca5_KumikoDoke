@@ -1,18 +1,12 @@
 <?php
-
 require_once'./board2.php';
 $db = getDb();
-
 session_start();
-
 $status = "none";
-
 if (isset($_SESSION["id"]))
     $status = "logged_in";
-
 else if (!empty($_POST["id"])&&
     !empty($_POST["name"])&& !empty($_POST["password"])) {
-
     $stt = $db->prepare("SELECT * FROM member_table ");
     $stt->bindValue(':id',$_POST["id"]);
     //var_dump($stt);
@@ -23,42 +17,32 @@ else if (!empty($_POST["id"])&&
     //$stt->store_result();
     //prepareとexecuteの意味がよくわからん
     //executeメソッドは取得した結果セットを自分自身(PDOstatementオブジェクト)にセットする
-
-
-
     while($row = $stt->fetch(PDO::FETCH_ASSOC)){
         if ($row['id'] == $_POST['id'] && $row['name'] == $_POST['name']
-         && $row['password'] == $_POST['password']){
-                $status = "ok";
-                $_SESSION["id"] = $_POST["id"];
-                break;
+            && $row['password'] == $_POST['password']){
+            $status = "ok";
+            $_SESSION["id"] = $_POST["id"];
+
+            break;
         }else{
             $status = "failed";
             //var_dump($row);
-        //    break;
+            //    break;
         }
     }
     //$row = $stt->fetchAll(PDO::FETCH_NUM);
     //var_dump($row[2][1]);//3つめのレコードのnameカラム
     //exit;
-
-
-
     //$record_num = 0;
     //while ($record_num <= count($row)) {
-
     //    if ($row[$record_num][0] == $_POST["id"]) {
-      //      $status = "ok";
-        //    $_SESSION["id"] = $_POST["id"];
-
-          //  break;
-        //} else {
-          //  $record_num += 1;
-            //break;
-        //}
-
-
-
+    //      $status = "ok";
+    //    $_SESSION["id"] = $_POST["id"];
+    //  break;
+    //} else {
+    //  $record_num += 1;
+    //break;
+    //}
 }
 //}else{$status = "failed";}
 //var_dump($status);
